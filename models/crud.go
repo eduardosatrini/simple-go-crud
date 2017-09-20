@@ -61,7 +61,7 @@ func Create(db *sql.DB, data map[string]string) (int64, error) {
 }
 
 // Read user
-func Read(db *sql.DB, id int64) (map[string]string, error) {
+func Read(db *sql.DB, id int64) (*User, error) {
 	stmt, err := db.Prepare("SELECT name, email, registered FROM users WHERE id = ?")
 	if err != nil {
 		return nil, err
@@ -69,22 +69,13 @@ func Read(db *sql.DB, id int64) (map[string]string, error) {
 
 	defer stmt.Close()
 
-	var name string
-	var email string
-	var registered string
-
-	err = stmt.QueryRow(id).Scan(&name, &email, &registered)
+	field := new(User)
+	err = stmt.QueryRow(id).Scan(&field.Name, &field.Email, &field.Registered)
 	if err != nil {
 		return nil, err
 	}
 
-	data := map[string]string{
-		"name":       name,
-		"email":      email,
-		"registered": registered,
-	}
-
-	return data, nil
+	return field, nil
 }
 
 // Update users

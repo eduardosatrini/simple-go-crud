@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"simple-crud/models"
 )
@@ -12,14 +11,14 @@ func main() {
 		log.Fatal(err)
 	}
 
-	rows, err := models.All(db)
-	if err != nil {
-		log.Fatal(err)
-	}
+	// rows, err := models.All(db)
+	// if err != nil {
+	// 	log.Fatal(err)
+	// }
 
-	for _, value := range rows {
-		fmt.Println(value.Name, "-", value.Email)
-	}
+	// for _, value := range rows {
+	// 	fmt.Println(value.Name, "-", value.Email)
+	// }
 
 	// data := map[string]string{
 	// 	"name":  "John Doe II",
@@ -49,7 +48,7 @@ func main() {
 	// 	log.Fatal(err)
 	// }
 
-	// fmt.Println(row)
+	// fmt.Println(row.Name)
 
 	// err = models.Delete(db, 5)
 	// if err != nil {
