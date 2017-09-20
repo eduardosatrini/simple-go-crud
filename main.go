@@ -2,7 +2,7 @@ package main
 
 import (
 	"log"
-	"register/models"
+	"simple-crud/models"
 )
 
 func main() {
