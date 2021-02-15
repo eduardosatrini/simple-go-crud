@@ -1,2 +1,2 @@
 # simple-crud-go
-A simple crud with golang for learning
+A simple CRUD with golang for learning
